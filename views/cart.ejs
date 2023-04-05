@@ -1,0 +1,47 @@
+<%- include('./parts/header.ejs') %>
+<%- include('./parts/navbar.ejs') %>
+<div class="cartPage">
+    <div class="container">
+        <div class="row">
+            <% if (products.length !== 0) {%>
+                <div class="col-12 col-lg-8 mb-4 mb-lg-0">
+                    <div class="card py-5">
+                        <% products.forEach(product => {%>
+                            <div class="row align-items-center mb-4 py-3">
+                                <div class="col-12 col-md-3 text-center mb-4 mb-md-0">
+                                    <img src="<%= product.iamge %>" class="img-fluid" alt="">
+                                </div>
+                                <div class="col-12 col-md-3 text-center mb-3 mb-md-0">
+                                    <h5 class="name"><%= product.name %></h5>
+                                </div>
+                                <div class="col-12 col-md-3 text-center mb-3 mb-md-0">
+                                    <h6 class="price">$<%= product.price %></h6>
+                                </div>
+                                <div class="col-12 col-md-3 text-center">
+                                    <form method="post">
+                                        <input type="hidden" name="cartId" value="<%= product._id %>">
+                                        <input type="submit" value="Delete" name="delete" formaction="/cart/delete">
+                                    </form>
+                                </div>
+                            </div>
+                        <%}); %>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-4 main-card">
+                            <div class="card">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-6" style="font-weight: 800;">SubTotal</div>
+                                        <div class="col-6" style="font-weight: 800;text-align: end;">$<%= subTotal %></div>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                    <%} else {%>
+                        <h3>Your Cart is Empty</h3>
+                        <a href="/" class="link">Continue Shopping</a>
+                    <%} %>
+        </div>
+    </div>
+</div>
+<%- include('./parts/footer.ejs') %>

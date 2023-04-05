@@ -1,0 +1,39 @@
+<%- include('./parts/header.ejs') %>
+<%- include('./parts/navbar.ejs') %>
+<% if (cartValidator) {%>
+  <div class="alert alert-danger w-100" style="position: fixed;border: 0px;border-radius: 0px;top: 80px;text-align: center;z-index: 999999999;"><%= cartValidator %></div>
+<%} %>
+<div class="signupPage">
+    <div class="container">
+        <% if (loginVlidatorEmail) {%>
+            <div class="alert alert-danger"><%= loginVlidatorEmail %></div>
+       <% } %>
+       
+       <form action="/login" method="POST">
+        <!-- email -->
+        <label for="email">Email</label>
+        <input type="text" name="email" class="form-control" id="email">
+        <% if (loginErrors && loginErrors.length > 0) {
+          const emailError = loginErrors.find(error => error.param === 'email');
+          if (emailError) { %>
+            <div class="alert alert-danger"><%= emailError.msg %></div>
+          <% }
+        } %>
+        <!-- password -->
+        <label for="password">Password</label>
+        <input type="password" name="password" class="form-control" id="password">
+        <% if (loginErrors && loginErrors.length > 0) {
+          const passwordError = loginErrors.find(error => error.param === 'password');
+          if (passwordError) { %>
+            <div class="alert alert-danger"><%= passwordError.msg %></div>
+          <% }
+        } %>
+        <div class="mb-3 mt-5">Don't have an account ?? <a href="/signup" style="color: black;text-decoration: underline;">signup</a></div>
+        <!-- submit -->
+        <div>
+          <input type="submit" value="Login" class="btn">
+        </div>
+      </form>
+    </div>
+</div>
+<%- include('./parts/footer.ejs') %>

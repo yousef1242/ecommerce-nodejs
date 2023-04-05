@@ -1,0 +1,45 @@
+<%- include('./parts/header.ejs') %>
+<%- include('./parts/navbar.ejs') %>
+<% if (cartValidator) {%>
+   <div class="alert alert-danger w-100" style="position: fixed;border: 0px;border-radius: 0px;top: 80px;text-align: center;z-index: 999999999;"><%= cartValidator %></div>
+<%} %>
+<div class="signupPage">
+    <div class="container">
+        <% if (signupVlidatorEmail) {%>
+            <div class="alert alert-danger"><%= signupVlidatorEmail %></div>
+       <% } %>
+      <form action="/signup" method="POST">
+        <!-- username -->
+        <label for="username">Username</label>
+        <input type="text" name="username" class="form-control" id="username">
+        <% if (signupVlidatorinput) {
+             const usernameError = signupVlidatorinput.find(error => error.param === 'username');
+             if (usernameError) { %>
+               <div class="alert alert-danger"><%= usernameError.msg %></div>
+        <%  }
+           } %>
+        <!-- email -->
+        <label for="email">Email</label>
+        <input type="text" name="email" class="form-control" id="email">
+        <% if (signupVlidatorinput) {
+             const emailError = signupVlidatorinput.find(error => error.param === 'email');
+             if (emailError) { %>
+               <div class="alert alert-danger"><%= emailError.msg %></div>
+        <%  }
+           } %>
+        <!-- password -->
+        <label for="password">Password</label>
+        <input type="text" name="password" class="form-control" id="password">
+        <% if (signupVlidatorinput) {
+             const passwordError = signupVlidatorinput.find(error => error.param === 'password');
+             if (passwordError) { %>
+               <div class="alert alert-danger"><%= passwordError.msg %></div>
+        <%  }
+           } %>
+           <div class="mb-3 mt-5">Already have an account ?? <a href="/login" style="color: black;text-decoration: underline;">Login</a></div>
+        <div>
+            <button type="submit" class="btn">Create Account</button></div>
+      </form>
+    </div>
+</div>
+<%- include('./parts/footer.ejs') %>

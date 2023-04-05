@@ -1,0 +1,53 @@
+<%- include('./parts/header.ejs') %>
+<%- include('./parts/navbar.ejs') %>
+<% if (cartValidator) {%>
+    <div class="alert alert-danger w-100" style="position: fixed;border: 0px;border-radius: 0px;top: 80px;text-align: center;z-index: 999999999;"><%= cartValidator %></div>
+<%} %>
+<div class="Start-exploring py-4">
+    <div class="container container-1" style="margin-top: 6rem;">
+        <h2><%= Categoryname %> Products.</h2>
+        <div class="row ">
+            <% products.forEach(product => {%>
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                    <div class="card" style="height: 100%;">
+                        <div class="container">
+                            <a href="/products/<%= product._id %>">
+                                <div class="row">
+                                    <div class="col-12 text-center">
+                                        <img class="img-fluid" src="<%= product.image %>" alt="">
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="card-body">
+                                            <p><%= product.name %></p>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 mb-4">
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="col-6 ">
+                                                    <span>$<%= product.price %></span>
+                                                </div>
+                                                <div class="col-6 text-center">
+                                                    <span><%= product.reviews %></span>
+                                                    <span>rating</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                            <form action="/cart" method="POST">
+                                <input type="hidden" value="<%= product.name %>" name="name">
+                                <input type="hidden" value="<%= product.price %>" name="price">
+                                <input type="hidden" value="<%= product.image %>" name="iamge">
+                                <input type="hidden" value="<%= product._id %>" name="productId">
+                                <input type="submit" value="Add To Bag">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            <%}); %>
+        </div>
+    </div>
+</div>
+<%- include('./parts/footer.ejs') %>
