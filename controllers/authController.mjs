@@ -12,7 +12,7 @@ export const getSignupController = (req,res) => {
         titleName : "signup",
         signupVlidatorEmail : req.flash('signupVlidatorEmail')[0],
         signupVlidatorinput : req.flash('signupVlidatorinput'),
-        cartValidator : cartValidator
+        cartValidator : cartValidator,
     })
 }
 
@@ -65,7 +65,7 @@ export const getLoginController = (req, res) => {
       titleName: 'login',
       loginVlidatorEmail: req.flash('loginVlidatorEmail')[0],
       loginErrors: req.flash('loginVlidatorinput'),
-      cartValidator : cartValidator
+      cartValidator : cartValidator,
     });
   };
 
