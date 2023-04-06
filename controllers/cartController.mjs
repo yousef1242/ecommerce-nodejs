@@ -39,10 +39,11 @@ export const postCartPage = (req,res) => {
             })
             return addCart.save()
         }).then(resault => {
-            res.redirect('/cart')
+            res.redirect('/#products')
+            req.flash('cartAdeddMessage','Product is added')
         })
     } else {
-        res.redirect('/signup')
+        res.redirect('/')
         req.flash('cartValidator',"You need to signup")
     }
 }

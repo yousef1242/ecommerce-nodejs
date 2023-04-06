@@ -316,6 +316,19 @@ a{
 .cartPage table{
     margin-bottom: 0px;
 }
+#myAlert{
+    position: fixed;
+    border: 0px;
+    border-radius: 0px;
+    /* top: 80px; */
+    z-index: 999999999;
+    width: 300px;
+    bottom: -16px;
+    
+}
+.navbar-nav .dropdown-menu{
+    z-index: 9999999999999999999999999;
+}
 @media screen and (min-width: 1149px) {
     .cartPage .container .main-card .card{
         position: fixed;

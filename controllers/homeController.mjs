@@ -7,12 +7,14 @@ export function getProductsHomeController(req,res) {
     getAllProducts()
     .then((products) => {
         const cartValidator = req.flash('cartValidator')[0]
+        const cartAdeddMessage = req.flash('cartAdeddMessage')[0]
         res.render('index',{
             products : products,
             isUser : req.session.userId,
             userName:req.session.userName,
             titleName : "Home",
-            cartValidator : cartValidator
+            cartValidator : cartValidator,
+            cartAdeddMessage : cartAdeddMessage,
         })
     })
 }

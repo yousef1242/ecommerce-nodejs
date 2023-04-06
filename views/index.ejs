@@ -1,8 +1,25 @@
 <%- include('./parts/header.ejs') %>
 <%- include('./parts/navbar.ejs') %>
 <% if (cartValidator) {%>
-    <div class="alert alert-danger w-100" style="position: fixed;border: 0px;border-radius: 0px;top: 80px;text-align: center;z-index: 999999999;"><%= cartValidator %></div>
+    <div class="alert alert-danger w-100" style="position: fixed;border: 0px;border-radius: 0px;top: 80px;text-align: center;z-index: 999;"><%= cartValidator %>!! <a href="/signup" style="color: black;text-decoration: underline;">signup</a> ??</div>
 <%} %>
+<% if (cartAdeddMessage) {%>
+    <div id="myAlert" class="alert alert-success" ><%= cartAdeddMessage %></div>
+<%} %>
+
+<script>
+  // Function to show the alert after 3 seconds
+  function showAlert() {
+    var alertEl = document.getElementById('myAlert');
+    alertEl.style.display = 'block';
+    setTimeout(function() {
+      alertEl.style.display = 'none';
+    }, 5000);
+  }
+
+  // Call the showAlert function after 3 seconds
+  setTimeout(showAlert);
+</script>
 <div class="frontPage">
     <div class="container">
         <div class="row align-items-center">
