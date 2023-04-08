@@ -22,9 +22,6 @@ export const postReview = (req,res) => {
         res.status(500).send('Error saving review');
       });
     } else {
-      const result = {
-        reviewdes: req.body.reviewdes
-      };
       req.flash('reviewError', errors.array());
       res.redirect(`/products/${req.session.productDetailsId}/#btn-review`);
     }

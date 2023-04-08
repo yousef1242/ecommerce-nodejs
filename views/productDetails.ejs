@@ -25,12 +25,17 @@
     <div class="container">
         <h2 class="text-center">Reviews <a href="#reviews"><img src="/5186332.png" alt=""></a></h2>
         <!-- review -->
-        <% if (resault ||resault.length !== 0) {%>
+        <% if (resault.length !== 0) {%>
             <% resault.forEach(res => {%>
             <div class="row align-items-center" id="<%= res.reviewdes %>">
                 <div class="col-2 bg-letter mb-4">
-                    <% let letter  = res.username.charAt(0) %>
+                    <% let letter = '' %>
+                    <% if (res.username) { %>
+                        <% letter = res.username.charAt(0) %>
+                    <% } %>
                     <%= letter %>
+                </div>
+                <div class="col-10 mb-4">
                 </div>
                 <div class="col-10 mb-4">
                     <h5 class="fw-bold"><%= res.username %></h5>
