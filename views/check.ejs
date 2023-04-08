@@ -247,11 +247,41 @@
                     <option value="Zambia">Zambia</option>
                     <option value="Zimbabwe">Zimbabwe</option>
                     </select>
-                    <input class="d-block mb-4 w-100 text" type="text" name="firstName" placeholder="First name">
-                    <input class="d-block mb-4 w-100 text" type="text" name="lastName" placeholder="Last name">
-                    <input class="d-block mb-4 w-100 text" type="text" name="adress" placeholder="Adress">
-                    <input class="d-block mb-4 w-100 text" type="text" name="city" placeholder="City">
-                    <input class="d-block mb-4 w-100 text" type="tel" name="phone" placeholder="Phone">
+                    <input class="d-block mb-2 w-100 text" id="firstName" type="text" name="firstName" placeholder="First name">
+                    <% if (checkoutErrors && checkoutErrors.length > 0) {
+                        const emailError = checkoutErrors.find(error => error.param === 'firstName');
+                        if (emailError) { %>
+                          <label for="firstName" class="check-error mb-4"><%= emailError.msg %></label>
+                        <% }
+                      } %>
+                    <input class="d-block mb-2 w-100 text" type="text" id="adress" name="lastName" placeholder="Last name">
+                    <% if (checkoutErrors && checkoutErrors.length > 0) {
+                        const emailError = checkoutErrors.find(error => error.param === 'adress');
+                        if (emailError) { %>
+                          <label for="lastName" class="check-error mb-4"><%= emailError.msg %></label>
+                        <% }
+                      } %>
+                    <input class="d-block mb-2 w-100 text" type="text" id="adress" name="adress" placeholder="Adress">
+                    <% if (checkoutErrors && checkoutErrors.length > 0) {
+                        const emailError = checkoutErrors.find(error => error.param === 'adress');
+                        if (emailError) { %>
+                          <label for="adress" class="check-error mb-4"><%= emailError.msg %></label>
+                        <% }
+                      } %>
+                    <input class="d-block mb-2 w-100 text" type="text" id="city" name="city" placeholder="City">
+                                        <% if (checkoutErrors && checkoutErrors.length > 0) {
+                        const emailError = checkoutErrors.find(error => error.param === 'city');
+                        if (emailError) { %>
+                          <label for="city" class="check-error mb-4"><%= emailError.msg %></label>
+                        <% }
+                      } %>
+                    <input class="d-block mb-2 w-100 text" type="tel" id="phone" name="phone" placeholder="Phone">
+                                        <% if (checkoutErrors && checkoutErrors.length > 0) {
+                        const emailError = checkoutErrors.find(error => error.param === 'phone');
+                        if (emailError) { %>
+                          <label for="phone" class="check-error mb-4 d-block"><%= emailError.msg %></label>
+                        <% }
+                      } %>
                     <input type="submit" class="btn" value="Continue Shipping">
                 </form>
             </div>

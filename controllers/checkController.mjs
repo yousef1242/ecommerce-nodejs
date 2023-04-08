@@ -1,7 +1,7 @@
 import mongoose from "mongoose"
 import { Cart } from "../models/cartModels.mjs"
 import { orders } from "../models/checkModels.mjs"
-
+import { validationResult } from "express-validator"
 
 
 
@@ -12,12 +12,14 @@ export const getCheckController = (req,res,next) => {
             resaults.forEach((product) => {
                 subTotal += product.price * product.amount;
                 })
+                const checkoutErrors = req.flash('checkoutErrors')
             res.render('check',{
                 products : resaults,
                 titleName : "checkout",
                 isUser : req.session.userId,
                 userName:req.session.userName,
                 subTotal : subTotal,
+                checkoutErrors : checkoutErrors
             })
         })
     })
@@ -36,8 +38,8 @@ export const postCheckController = (req,res,next) => {
             productNames.push(product.name);
             productprice.push(product.price);
           });
-  
-          const newOrder = new orders({
+          if (validationResult(req).isEmpty()) {
+                      const newOrder = new orders({
             country: req.body.countryCode,
             firstName: req.body.firstName,
             lastName: req.body.lastName,
@@ -59,6 +61,10 @@ export const postCheckController = (req,res,next) => {
               console.error(err);
               res.status(500).send('Error saving order data');
             });
+          } else {
+            req.flash('checkoutErrors',validationResult(req).array())
+            res.redirect('/cart/checkout')
+          }
         })
         .catch((err) => {
           console.error(err);

@@ -365,6 +365,9 @@ a{
     border-radius:3px ;
     border: 1px solid #666;
 }
+.checkout .container .row form .check-error{
+    color: red;
+}
 .checkout .container .row form .btn{
     padding: 8px 15px;
     border-radius: 3px;
