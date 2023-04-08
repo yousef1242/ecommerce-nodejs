@@ -1,0 +1,50 @@
+<%- include('./parts/header.ejs') %>
+<%- include('./parts/navbar.ejs') %>
+<div class="myorders" style="padding-top: 130px;padding-bottom: 50px;min-height: 100vh;">
+    <h1 class="text-center fw-bold mb-5">My Orders</h1>
+    <div class="container">
+        <div class="row">
+            <% if (orders.length !== 0) {%>
+                <div class="col-12">
+                    <% orders.forEach(order => {%>
+                    <div class="card mb-4 py-5" style="padding-left:30px ;padding-right: 30px;">
+                            <div class="row align-items-center mb-4 py-3">
+                                <div class="col-12 col-md-3 text-center mb-4 mb-md-4">
+                                    <% order.productNames.forEach(name => {%>
+                                        <span style="font-weight: bold;">Product name</span> : <%= name %>
+                                    <%}); %>
+                                </div>
+                                <div class="col-12 col-md-3 text-center mb-3 mb-md-4">
+                                    <% let total = 0 %>
+                                    <% order.productprice.forEach(price => { %>
+                                      <% total += price %>
+                                    <% }) %>
+                                    <span style="font-weight: bold;">Price</span> : $<%= total + 7 * order.productprice.length %>
+                                </div>
+                                <div class="col-12 col-md-3 text-center mb-3 mb-md-4">
+                                    <span style="font-weight: bold;">country</span> : <%= order.country %>
+                                </div>
+                                <div class="col-12 col-md-3 text-center mb-3 mb-md-4">
+                                    <span style="font-weight: bold;">Name</span> : <%= order.firstName %> <%= order.lastName %>
+                                </div>
+                                <div class="col-12 col-md-3 text-center mb-3 mb-md-0">
+                                    <span style="font-weight: bold;">Adress</span> : <%= order.adress %>
+                                </div>
+                                <div class="col-12 col-md-3 text-center mb-3 mb-md-0">
+                                    <span style="font-weight: bold;">City</span> : <%= order.city %>
+                                </div>
+                                <div class="col-12 col-md-3 text-center mb-3 mb-md-0">
+                                    <span style="font-weight: bold;">Phone</span> : <%= order.phone %>
+                                </div>
+                            </div>
+                        </div>
+                        <%}); %>
+                    </div>
+                    <%} else {%>
+                        <h2 class="ps-0 fw-bold mb-4">There is no orders</h2>
+                        <a href="/" class="link">Continue Shopping</a>
+                    <%} %>
+        </div>
+    </div>
+</div>
+<%- include('./parts/footer.ejs') %>

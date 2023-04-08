@@ -192,9 +192,8 @@ a{
 /* end product style */
 /* product details page */
 .productDetails{
-    min-height: 100vh;
     padding-top: 130px;
-    padding-bottom: 50px;
+    padding-bottom: 70px;
 }
 .productDetails .container .row .col-12 img{
     width: 350px;
@@ -316,18 +315,23 @@ a{
 .cartPage table{
     margin-bottom: 0px;
 }
-#myAlert{
-    position: fixed;
-    border: 0px;
-    border-radius: 0px;
-    /* top: 80px; */
-    z-index: 999999999;
-    width: 300px;
-    bottom: -16px;
-    
-}
+
 .navbar-nav .dropdown-menu{
     z-index: 9999999999999999999999999;
+}
+.checkoutLink{
+    text-align: center;
+    width: 100%!important;
+    position: absolute;
+    bottom: 0px;
+    left: 0;
+}
+.accept{
+    position: fixed;
+    z-index: 999;
+    width: 100%!important;
+    text-align: center;
+    top: 82px;
 }
 @media screen and (min-width: 1149px) {
     .cartPage .container .main-card .card{
@@ -337,3 +341,88 @@ a{
     }
 }
 /* end cartPage */
+/* checkout */
+.checkout{
+    min-height: 100vh;
+    padding-top: 130px;
+    padding-bottom: 50px;
+}
+.checkout .container{
+    width: 80%;
+    margin: 0px auto;
+}
+.checkout .container img{
+    max-width: 100%;
+}
+.checkout .container .row form select{
+    padding: 8px 7px;
+    border-radius:3px ;
+    border: 1px solid #666;
+    position: relative;
+}
+.checkout .container .row form .text{
+    padding: 8px 7px;
+    border-radius:3px ;
+    border: 1px solid #666;
+}
+.checkout .container .row form .btn{
+    padding: 8px 15px;
+    border-radius: 3px;
+    background-color: var(--black-color);
+    color: #fff;
+    text-align: center;
+    margin-top: 10px;
+}
+.link{
+    background: var(--black-color);
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 3px;
+    width: fit-content;
+}.link:hover{
+    color: #fff;
+}
+/* end checkout */
+/* reviewsSection */
+.reviewsSection{
+    padding-bottom: 50px;
+}
+.reviewsSection .container h2 a img{
+    height: 52px;
+}
+.reviewsSection .container .row{
+    border-radius: 4px;
+    border: 1px solid #777;
+    padding: 20px 15px;
+    margin-bottom: 20px;
+}
+.reviewsSection .container h2{
+    margin-bottom: 50px;
+}
+.reviewsSection .container .row .bg-letter{
+    background: green;
+    color: #fff;
+    border-radius: 100px;
+    padding: 17px 25px;
+    width: fit-content;
+}
+.reviewsSection .container form .input-review{
+    padding: 8px 7px;
+    border-radius: 3px;
+    border: 1px solid #666;
+    display: block;
+    outline: none;
+    margin-bottom: 5px;
+    margin-top: 40px;
+}
+.reviewsSection .container form .input-review:focus{
+    border: 1px solid green;
+}
+.reviewsSection .container form .btn{
+    background: var(--black-color);
+    padding: 10px 35px;
+    border-radius: 4px;
+    color: #fff;
+    font-weight: 600;
+}
+/* end reviewsSection */

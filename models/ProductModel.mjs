@@ -15,7 +15,10 @@ export const getAllProducts = () => {
     return new Promise((resolve, reject) => {
         mongoose.connect(process.env.CONNECT_MONGODB).then(() => {
             Item.find({}).then((items) => {
-                resolve(items);
+                resolve({
+                    items : items,
+                    id : items._id
+                });
             });
         }).catch(err => reject(err));
     });

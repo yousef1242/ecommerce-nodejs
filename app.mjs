@@ -5,6 +5,8 @@ import homeRoutes from './routes/homeRoutes.mjs';
 import productRoutes from './routes/productRoutes.mjs';
 import authRoutes from './routes/authRoutes.mjs';
 import cartRoutes from './routes/cartRoutes.mjs';
+import checkRoutes from './routes/checkRoutes.mjs';
+import myordersRoutes from './routes/myordersRoutes.mjs';
 import path from 'path';
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
@@ -51,6 +53,8 @@ app.use('/', productRoutes);
 app.use('/', categoryRoutes);
 app.use('/', authRoutes);
 app.use('/', cartRoutes);
+app.use('/', checkRoutes);
+app.use('/', myordersRoutes);
 
 
 mongoose.connect(process.env.CONNECT_MONGODB).then(() => {

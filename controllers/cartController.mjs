@@ -7,9 +7,11 @@ export const getCartController = (req,res) => {
     mongoose.connect(process.env.CONNECT_MONGODB).then(() => {
         Cart.find({userId : req.session.userId}).then((resault) => {
             let subTotal = 0;
+            
             resault.forEach((product) => {
-                subTotal += product.price * product.amount;
+                subTotal += product.price * product.amount;    
                 })
+                
             res.render('cart',{
                 titleName : "cart",
                 isUser : req.session.userId,

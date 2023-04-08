@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
-import { Item } from "../models/ProductModel.mjs";
+import { Item, getAllProducts } from "../models/ProductModel.mjs";
+import { Review } from "../models/reviewsModels.mjs";
 
 export const getProductsDetailsController = (req, res) => {
     const productId = req.params.id;
@@ -11,18 +12,23 @@ export const getProductsDetailsController = (req, res) => {
             if (!Item) {
                 return res.status(404).send('Product not found');
             }
-    
-            const cartValidator = req.flash('cartValidator')[0]
-            res.render('productDetails', {
-            titleName : "productDetails" , 
-            product : product,
-            isUser : req.session.userId,
-            userName:req.session.userName,
-            cartValidator : cartValidator
-        });
-        }).catch((err) => {
-            console.log(err);
-            res.status(500).send('Error fetching product details');
-        });
+            req.session.productDetailsId = product._id
+            Review.find({productDetailsId : req.session.productDetailsId}).then((resault) => {
+                const cartValidator = req.flash('cartValidator')[0];
+                const errorReviewInput = req.flash('reviewError')[0];
+                res.render('productDetails', {
+                titleName : "productDetails" , 
+                product : product,
+                isUser : req.session.userId,
+                userName:req.session.userName,
+                cartValidator : cartValidator,
+                resault : resault,
+                errorReviewInput : errorReviewInput
+            });
+            }).catch((err) => {
+                console.log(err);
+                res.status(500).send('Error fetching product details');
+            });
+            })
     })
 };

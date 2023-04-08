@@ -41,6 +41,7 @@
                     <li><a class="dropdown-item" style="color: white;" href="/signup">Signup</a></li>
                   <%} %>
                   <% if (isUser) {%>
+                    <li><a class="dropdown-item" style="color: white;" href="/myorders">My Orders</a></li>
                     <li>
                       <form action="/logout" method="POST">
                           <input type="submit" value="Logout" class="w-100 dropdown-item">

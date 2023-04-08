@@ -21,4 +21,37 @@
         </div>
     </div>
 </div>
+<div class="reviewsSection" id="reviews">
+    <div class="container">
+        <h2 class="text-center">Reviews <a href="#reviews"><img src="/5186332.png" alt=""></a></h2>
+        <!-- review -->
+        <% if (resault.length !== 0) {%>
+            <% resault.forEach(res => {%>
+            <div class="row align-items-center" id="<%= res.reviewdes %>">
+                <div class="col-2 bg-letter mb-4">
+                    <% let letter  = res.username.charAt(0) %>
+                    <%= letter %>
+                </div>
+                <div class="col-10 mb-4">
+                    <h5 class="fw-bold"><%= res.username %></h5>
+                    <p><i style="color: green;" class="fa-solid fa-star"></i><i style="color: green;" class="fa-solid fa-star"></i><i style="color: green;" class="fa-solid fa-star"></i><i style="color: green;" class="fa-solid fa-star"></i><i style="color: green;" class="fa-solid fa-star"></i></p>
+                </div>
+                <div class="col-12">
+                    <p><%= res.reviewdes %></p>
+                </div>
+            </div>
+        <%}); %>
+        <%} else {%>
+            <h2 class="text-center fw-bold mb-5">There is no reviews!! add your review <a href="#form-review"><img src="/5186332.png" alt=""></a></h2>
+        <%} %>
+        <!-- add reviews -->
+        <form id="form-review" action="/products/<%= product._id %>/addreview" method="POST">
+           <input type="text" id="input-review" name="reviewdes" class="input-review" placeholder="Add your review" >
+           <% if (errorReviewInput) {%>
+            <label for="input-review"  id="btn-review" class="d-block" style="color: red;margin-bottom: 15px;"><%= errorReviewInput.msg %></label>
+           <%} %>
+           <input  style="margin-top: 15px;" type="submit" class="btn" value="Add">
+        </form>
+    </div>
+</div>
 <%- include('./parts/footer.ejs') %>
