@@ -25,7 +25,7 @@
     <div class="container">
         <h2 class="text-center">Reviews <a href="#reviews"><img src="/5186332.png" alt=""></a></h2>
         <!-- review -->
-        <% if (resault.length !== 0) {%>
+        <% if (resault ||resault.length !== 0) {%>
             <% resault.forEach(res => {%>
             <div class="row align-items-center" id="<%= res.reviewdes %>">
                 <div class="col-2 bg-letter mb-4">
