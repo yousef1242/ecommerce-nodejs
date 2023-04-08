@@ -9,6 +9,9 @@
 <% if (messageOrderAccept) {%>
     <div id="myAlert" class="alert alert-primary accept" ><%= messageOrderAccept %></div>
 <%} %>
+<% if (reviewAuthError) {%>
+    <div id="myAlert" class="alert alert-danger accept" ><%= reviewAuthError %> <a href="/signup" style="color: black;text-decoration: underline;">signup</a> ??</div>
+<%} %>
 
 <script>
   // Function to show the alert after 3 seconds

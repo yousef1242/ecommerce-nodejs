@@ -16,5 +16,6 @@ export const notAuth = (req,res,next) => {
         next()
     } else {
         res.redirect('/')
+        req.flash('reviewAuthError','you need to signup!!')
     }
 }

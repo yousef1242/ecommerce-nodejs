@@ -9,6 +9,7 @@ export function getProductsHomeController(req,res) {
         const cartValidator = req.flash('cartValidator')[0]
         const cartAdeddMessage = req.flash('cartAdeddMessage')[0]
         const messageOrderAccept = req.flash('messageOrderAccept')[0]
+        const reviewAuthError = req.flash('reviewAuthError')[0]
         res.render('index',{
             products : products.items,
             isUser : req.session.userId,
@@ -17,6 +18,7 @@ export function getProductsHomeController(req,res) {
             cartValidator : cartValidator,
             cartAdeddMessage : cartAdeddMessage,
             messageOrderAccept : messageOrderAccept,
+            reviewAuthError : reviewAuthError,
         })
     })
 }
